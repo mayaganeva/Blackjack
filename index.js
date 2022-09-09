@@ -1,5 +1,5 @@
 let player = {
-    name: "Per",
+    name: "Chips",
     chips: 200
 }
 
@@ -63,3 +63,9 @@ function newCard() {
         renderGame()        
     }
 }
+
+// Mobile viewport height fix
+
+let vh = window.innerHeight * 0.01;
+
+document.documentElement.style.setProperty('--vh', `${vh}px`);

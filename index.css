@@ -1,14 +1,29 @@
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background-image: url("images/table.png");
-    background-size: cover;
+    background: #191919;
     font-weight: bold;
     color: white;
     text-align: center;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+}
+
+.container {
+    display: grid;
+    margin: auto;
+    min-width: 400px;
+    max-width: 600px;
+    outline: 2px solid rebeccapurple;
 }
 
 h1 {
     color: goldenrod;
+    font-size: 4rem;
+}
+
+p,
+button {
+    font-size: 1.5rem;
 }
 
 #message-el {
@@ -16,14 +31,16 @@ h1 {
 }
 
 button {
-    color: #016f32;
-    width: 150px;
+    color: #191919;
     background: goldenrod;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: .5em 1.5em;
     font-weight: bold;
     border: none;
-    border-radius: 2px;
-    margin-bottom: 2px;
-    margin-top: 2px;
+    border-radius: .5em;
+    margin: .25em;
+    min-width: 220px;
+}
+
+button:hover {
+    background-color: rgb(255, 198, 52);
 }
