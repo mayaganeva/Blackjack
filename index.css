@@ -6,6 +6,7 @@ body {
     text-align: center;
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
+    display: grid;
 }
 
 .container {
@@ -13,7 +14,6 @@ body {
     margin: auto;
     min-width: 400px;
     max-width: 600px;
-    outline: 2px solid rebeccapurple;
 }
 
 h1 {
