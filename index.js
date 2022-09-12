@@ -1,71 +1,65 @@
-let player = {
-    name: "Chips",
-    chips: 200
-}
-
 let cards = []
+let card = 0
 let sum = 0
-let hasBlackJack = false
 let isAlive = false
+let hasBlackjack = false
 let message = ""
 let messageEl = document.getElementById("message-el")
-let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
-let playerEl = document.getElementById("player-el")
-
-playerEl.textContent = player.name + ": $" + player.chips
-
-function getRandomCard() {
-    let randomNumber = Math.floor( Math.random()*13 ) + 1
-    if (randomNumber > 10) {
-        return 10
-    } else if (randomNumber === 1) {
-        return 11
-    } else {
-        return randomNumber
-    }
-}
+let sumEl = document.getElementById("sum-el")
+let errorEl = document.getElementById("error-el")
 
 function startGame() {
-    isAlive = true
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
+    errorEl.innerText = ""
     renderGame()
+    console.log(firstCard)
 }
 
 function renderGame() {
+    isAlive = true
+    hasBlackjack = false
     cardsEl.textContent = "Cards: "
+    sumEl.textContent = "Sum: " + sum
+    
     for (let i = 0; i < cards.length; i++) {
-        cardsEl.textContent += cards[i] + " "
+        cardsEl.textContent += " " + cards[i] + " "
     }
     
-    sumEl.textContent = "Sum: " + sum
     if (sum <= 20) {
-        message = "Do you want to draw a new card?"
+        message = "You're still in the game. Another card?"
     } else if (sum === 21) {
-        message = "You've got Blackjack!"
-        hasBlackJack = true
+        message = "Blackjack!"
+        hasBlackjack = true
     } else {
-        message = "You're out of the game!"
+        message = "You're out of the game. Play again?"
         isAlive = false
     }
     messageEl.textContent = message
 }
 
-
 function newCard() {
-    if (isAlive === true && hasBlackJack === false) {
-        let card = getRandomCard()
-        sum += card
+    if (isAlive === true && hasBlackjack === false) {
+        card = getRandomCard()
         cards.push(card)
-        renderGame()        
+        sum += card
+        renderGame()
+    } else {
+        errorEl.textContent = "You can't draw a new card. Click START GAME to begin a new game."
     }
 }
 
-// Mobile viewport height fix
-
-let vh = window.innerHeight * 0.01;
-
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+function getRandomCard() {
+    let randomNumber = Math.floor(Math.random() * 13) + 1
+    
+    if (randomNumber === 1) {
+        return 11
+    } else if (randomNumber > 10) {
+        return 10
+    } else {
+        return randomNumber
+    }
+}

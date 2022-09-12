@@ -1,46 +1,72 @@
+:root {
+    --bg: hsl(0, 0%, 10%);
+    --accent: hsl(43, 75%, 50%);
+    --hover: hsl(43, 90%, 60%);
+    --error: hsl(20, 100%, 50%);
+}
+
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
-    background: #191919;
-    font-weight: bold;
+    background-color: var(--bg);
     color: white;
-    text-align: center;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
     display: grid;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
 }
 
 .container {
     display: grid;
-    margin: auto;
-    min-width: 400px;
-    max-width: 600px;
+    margin: 9.5vh auto auto auto;
+    width: 320px;
+    padding: 2em;
 }
 
 h1 {
-    color: goldenrod;
+    color: var(--accent);
     font-size: 4rem;
+    margin-block: 0 .5em; 
+}
+
+#intro,
+#error-el {
+    color: var(--error);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+#message-el {
+    font-style: italic;
+    font-weight: 500;
 }
 
 p,
 button {
     font-size: 1.5rem;
+    line-height: 1.5;
+    margin-block: .8em;
 }
 
-#message-el {
-    font-style: italic;
+p:last-of-type {
+    margin-bottom: 1.5em;
 }
 
 button {
-    color: #191919;
-    background: goldenrod;
-    padding: .5em 1.5em;
-    font-weight: bold;
+    background: var(--accent);
     border: none;
     border-radius: .5em;
-    margin: .25em;
-    min-width: 220px;
+    font-weight: bold;
+    color: var(--bg);
+    margin-block: .3em;
+    padding: .4em 1.5em;
+}
+
+button:last-of-type {
+    margin-bottom: 0;
 }
 
 button:hover {
-    background-color: rgb(255, 198, 52);
+    background-color: var(--hover);
 }
