@@ -77,18 +77,57 @@ body {
 }
 
 .content {
+	-webkit-backdrop-filter: brightness(.6);
+	backdrop-filter: brightness(.6);
 	display: grid;
 	inset: 0;
 	position: absolute;
 	place-content: center;
 }
 
+
 h1 {
 	color: var(--accent);
 	font-size: 15cqi;
 	font-weight: var(--fw-l);
-	margin-block: -2cqi 5cqi; 
-	text-shadow: 1cqi 1cqi 2cqi #000a;
+	margin-block: -2cqi 1cqi; 
+	text-shadow: 1cqi 1cqi 1.5cqi #000a;
+}
+
+p,
+button {
+	font-size: var(--fz-s);
+	margin-block: 4cqi;
+}
+
+p {
+	font-weight: var(--fw-m);
+	margin-block: 3cqi;
+}
+
+button {
+	background: var(--accent);
+	border: none;
+	border-radius: .5em;
+	box-shadow: .1cqi .1cqi .4cqi #0005,
+				.5cqi .5cqi 2cqi #0002;
+	display: block;
+	font-family: var(--ff-base);
+	font-weight: bold;
+	color: var(--bg);
+	margin: .3em auto;
+	padding: .4em 1.5em;
+	transition: 250ms;
+	width: 50cqi;
+}
+
+button:last-of-type {
+	margin-bottom: 0;
+}
+
+button:hover {
+	background-color: var(--hover);
+	cursor: pointer;
 }
 
 #intro,
@@ -109,7 +148,7 @@ h1 {
 }
 
 #error {
-	background-color: #fffa;
+	background-color: var(--bg-o);
 	position: absolute;
 	-webkit-backdrop-filter: blur(2px);
 	backdrop-filter: blur(2px);
@@ -117,8 +156,7 @@ h1 {
 }
 
 .error-msg {
-	background-color: #fffc;
-	border: .5cqi solid var(--error);
+	background-color: #fffe;
 	border-radius: min(10px, 2cqi);
 	margin-inline: 10cqi;
 	padding: 6cqi;
@@ -154,7 +192,6 @@ h1 {
 	rotate: 135deg;
 }
 
-
 #error-el {
 	font-size: var(--fz-xs);
 }
@@ -168,43 +205,11 @@ h1 {
 	background-color: var(--error-hover);
 }
 
-p,
-button {
-	font-size: var(--fz-s);
-	margin-block: 4cqi;
-}
-
-p {
-	font-weight: var(--fw-m);
-	margin-block: 3cqi;
-}
-
 #cards-el,
 #sum-el {
 	margin-block: min(3cqi, 10px);
 }
 
-button {
-	background: var(--accent);
-	border: none;
-	border-radius: .5em;
-	box-shadow: .1cqi .1cqi .4cqi #0005,
-				.5cqi .5cqi 2cqi #0002;
-	display: block;
-	font-family: var(--ff-base);
-	font-weight: bold;
-	color: var(--bg);
-	margin: .3em auto;
-	padding: .4em 1.5em;
-	transition: 250ms;
-	width: 50cqi;
-}
-
-button:last-of-type {
-	margin-bottom: 0;
-}
-
-button:hover {
-	background-color: var(--hover);
-	cursor: pointer;
+#sum-el {
+	margin-bottom: 5cqi;
 }
