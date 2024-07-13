@@ -1,72 +1,160 @@
+@font-face {
+	font-family: 'Roboto Slab';
+	font-weight: 900;
+	src: url(fonts/RobotoSlab-Black.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto Slab';
+	font-weight: 500;
+	src: url(fonts/RobotoSlab-Medium.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto Slab';
+	font-weight: 300;
+	src: url(fonts/RobotoSlab-Regular.ttf);
+}
+
 :root {
-    --bg: hsl(0, 0%, 10%);
-    --accent: hsl(43, 75%, 50%);
-    --hover: hsl(43, 90%, 60%);
-    --error: hsl(20, 100%, 50%);
+	--bg: hsl(0, 0%, 10%);
+	--bg-o: hsla(0, 0%, 10%, 0.9);
+	--accent: hsl(43, 75%, 50%);
+	--hover: hsl(43, 92%, 59%);
+	--error: hsl(12, 100%, 50%);
+
+	--bg-img: url(images/table-chips.jpg);
+
+	--ff-base: 'Roboto Slab';
+
+	--fw-s: 300;
+	--fw-m: 500;
+	--fw-l: 800;
+
+	--fz-s: 4cqi;
+	--fz-m: 5.5cqi;
+}
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    background-color: var(--bg);
-    color: white;
-    display: grid;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
+	background-color: var(--bg);
+	color: white;
+	display: grid;
+	font: var(--fw-m) var(--fz-m) var(--ff-base);
+	min-height: 100vh;
+	margin: 0;
+	text-align: center;
+	place-items: center;
 }
 
-.container {
-    display: grid;
-    margin: 9.5vh auto auto auto;
-    width: 320px;
-    padding: 2em;
+@supports (height: 100dvh) {
+	body {
+		min-height: 100dvh;
+	}
+}
+
+.game-screen {
+	aspect-ratio: 1;
+	background-image: var(--bg-img);
+	background-size: cover;
+	border: min(2px, 1cqi) solid #fff;
+	border-radius: min(16px, 2.5cqi);
+	container-type: inline-size;
+	height: 70vmin;
+	margin-inline: auto;
+	position: relative;
+	user-select: none;
+}
+
+.content {
+	display: grid;
+	inset: 0;
+	position: absolute;
+	place-content: center;
 }
 
 h1 {
-    color: var(--accent);
-    font-size: 4rem;
-    margin-block: 0 .5em; 
+	color: var(--accent);
+	font-size: 15cqi;
+	font-weight: var(--fw-l);
+	margin-block: -2cqi 5cqi; 
+	text-shadow: 1cqi 1cqi 2cqi #000a;
 }
 
 #intro,
 #error-el {
-    color: var(--error);
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
+	color: var(--error);
+	font-weight: var(--fw-m);
+	line-height: 1.5;
 }
 
 #message-el {
-    font-style: italic;
-    font-weight: 500;
+	font-style: italic;
+	font-size: var(--fz-s);
+	font-weight: var(--fw-s);
+	height: 2lh;
+	align-content: center;
+}
+
+#error {
+	background-color: var(--bg-o);
+	border-radius: min(8px, 2cqi);
+	padding: 3cqi;
+	position: absolute;
+	margin: 6cqi;
+	top: 50%;
+	translate: 0 -50%;
+}
+
+.error-close {
+	background-color: pink;
 }
 
 p,
 button {
-    font-size: 1.5rem;
-    line-height: 1.5;
-    margin-block: .8em;
+	font-size: var(--fz-s);
+	line-height: 1.5;
+	margin-block: 4cqi;
 }
 
-p:last-of-type {
-    margin-bottom: 1.5em;
+p {
+	font-weight: var(--fw-m);
+	margin-block: 3cqi;
+}
+
+#cards-el,
+#sum-el {
+	margin-block: min(3cqi, 10px);
 }
 
 button {
-    background: var(--accent);
-    border: none;
-    border-radius: .5em;
-    font-weight: bold;
-    color: var(--bg);
-    margin-block: .3em;
-    padding: .4em 1.5em;
+	background: var(--accent);
+	border: none;
+	border-radius: .5em;
+	box-shadow: 1cqi 1cqi 2cqi #0005;
+	display: block;
+	font-size: var(--fz-s);
+	font-family: var(--ff-base);
+	font-weight: bold;
+	color: var(--bg);
+	margin: .3em auto;
+	padding: .4em 1.5em;
+	transition: 250ms;
+	width: 50cqi;
 }
 
 button:last-of-type {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 button:hover {
-    background-color: var(--hover);
+	background-color: var(--hover);
+	cursor: pointer;
 }

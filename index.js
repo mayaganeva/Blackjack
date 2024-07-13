@@ -4,10 +4,11 @@ let sum = 0
 let isAlive = false
 let hasBlackjack = false
 let message = ""
-let messageEl = document.getElementById("message-el")
-let cardsEl = document.getElementById("cards-el")
-let sumEl = document.getElementById("sum-el")
-let errorEl = document.getElementById("error-el")
+const messageEl = document.getElementById("message-el")
+const cardsEl = document.getElementById("cards-el")
+const sumEl = document.getElementById("sum-el")
+const errorEl = document.getElementById("error-el")
+const error = document.getElementById("error")
 
 function startGame() {
     let firstCard = getRandomCard()
@@ -23,14 +24,15 @@ function renderGame() {
     isAlive = true
     hasBlackjack = false
     cardsEl.textContent = "Cards: "
-    sumEl.textContent = "Sum: " + sum
+	sumEl.textContent = "Sum: " + sum
+	errorEl.classList.remove("error-bg")
     
     for (let i = 0; i < cards.length; i++) {
         cardsEl.textContent += " " + cards[i] + " "
     }
     
     if (sum <= 20) {
-        message = "You're still in the game. Another card?"
+        message = "You're still in the game. \n Another card?"
     } else if (sum === 21) {
         message = "Blackjack!"
         hasBlackjack = true
@@ -46,9 +48,10 @@ function newCard() {
         card = getRandomCard()
         cards.push(card)
         sum += card
-        renderGame()
-    } else {
-        errorEl.textContent = "You can't draw a new card. Click START GAME to begin a new game."
+		renderGame()
+	} else {
+		error.hidden = false
+		errorEl.textContent = "You can't draw a new card. Click START GAME to begin a new game."
     }
 }
 
@@ -62,4 +65,8 @@ function getRandomCard() {
     } else {
         return randomNumber
     }
+}
+
+function closeError() {
+	error.hidden = true
 }
