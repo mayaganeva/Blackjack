@@ -21,7 +21,8 @@
 	--bg-o: hsla(0, 0%, 10%, 0.9);
 	--accent: hsl(43, 75%, 50%);
 	--hover: hsl(43, 92%, 59%);
-	--error: hsl(12, 100%, 50%);
+	--error: hsl(12, 100%, 45%);
+	--error-hover: hsl(12, 88%, 51%);
 
 	--bg-img: url(images/table-chips.jpg);
 
@@ -31,6 +32,7 @@
 	--fw-m: 500;
 	--fw-l: 800;
 
+	--fz-xs: 3cqi;
 	--fz-s: 4cqi;
 	--fz-m: 5.5cqi;
 }
@@ -67,8 +69,9 @@ body {
 	border: min(2px, 1cqi) solid #fff;
 	border-radius: min(16px, 2.5cqi);
 	container-type: inline-size;
-	height: 70vmin;
+	height: 80vmin;
 	margin-inline: auto;
+	overflow: hidden;
 	position: relative;
 	user-select: none;
 }
@@ -90,9 +93,11 @@ h1 {
 
 #intro,
 #error-el {
-	color: var(--error);
+	color: var(--bg);
 	font-weight: var(--fw-m);
 	line-height: 1.5;
+	text-wrap: balance;
+	margin-block: 6cqi;
 }
 
 #message-el {
@@ -104,23 +109,68 @@ h1 {
 }
 
 #error {
-	background-color: var(--bg-o);
-	border-radius: min(8px, 2cqi);
-	padding: 3cqi;
+	background-color: #fffa;
 	position: absolute;
-	margin: 6cqi;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+	inset: 0;
+}
+
+.error-msg {
+	background-color: #fffc;
+	border: .5cqi solid var(--error);
+	border-radius: min(10px, 2cqi);
+	margin-inline: 10cqi;
+	padding: 6cqi;
+	position: absolute;
 	top: 50%;
 	translate: 0 -50%;
 }
 
-.error-close {
-	background-color: pink;
+.icon {
+	aspect-ratio: 1;
+	border: 1cqi solid var(--error);
+	border-radius: 50%;
+	display: block;
+	height: 10cqi;
+	margin-inline: auto;
+	position: relative;
+}
+
+.icon::before,
+.icon::after {
+	background-color: var(--error);
+    content: '';
+    display: block;
+    height: 1cqi;
+    width: 5cqi;
+    position: absolute;
+	inset: 50% auto auto 50%;
+	translate: -50% -50%;
+	rotate: 45deg;
+}
+
+.icon::after {
+	rotate: 135deg;
+}
+
+
+#error-el {
+	font-size: var(--fz-xs);
+}
+
+#error button {
+	background-color: var(--error);
+	color: #fffe;
+}
+
+#error button:hover {
+	background-color: var(--error-hover);
 }
 
 p,
 button {
 	font-size: var(--fz-s);
-	line-height: 1.5;
 	margin-block: 4cqi;
 }
 
@@ -138,9 +188,9 @@ button {
 	background: var(--accent);
 	border: none;
 	border-radius: .5em;
-	box-shadow: 1cqi 1cqi 2cqi #0005;
+	box-shadow: .1cqi .1cqi .4cqi #0005,
+				.5cqi .5cqi 2cqi #0002;
 	display: block;
-	font-size: var(--fz-s);
 	font-family: var(--ff-base);
 	font-weight: bold;
 	color: var(--bg);
